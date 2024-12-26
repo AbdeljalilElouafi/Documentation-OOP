@@ -69,6 +69,7 @@ Syntax and examples.
 
 A class is a blueprint for creating objects. A object is an instance of a class.
 
+```php
 // a class
 
  class Car {
@@ -92,7 +93,8 @@ A class is a blueprint for creating objects. A object is an instance of a class.
    $car->color= 'Light Gray';
    $car->topSpeed= '340 KM/H';
    $car->myCar();
-   
+
+```   
 -------------------------------------------------------
 
 3.1. Properties and Methods
@@ -100,6 +102,7 @@ Properties (attributes) are variables that belong to the class, and methods (fun
 
 Example:
 
+```php
 class Mycar {
     // properties
 
@@ -117,8 +120,7 @@ class Mycar {
     $car->color = "blue";
     $car->model = "BMW";
     $car->displayCar();
-
-
+```
 -------------------------------------------------------
 
 3.2. Constructors and Destructors
@@ -128,7 +130,7 @@ Destructor (__destruct): This is called when an object is destroyed, often used 
 
 Example:
 
-
+```php
 class Eye {
         public $color;
     
@@ -142,7 +144,7 @@ class Eye {
     }
     
     $eye = new Eye("green"); 
-
+```
 -------------------------------------------------------
 
 3.3. Access Modifiers
@@ -156,7 +158,7 @@ protected: Accessible within the class and by inheriting classes.
 
 Example:
 
-
+```php
 class Car {
     public $color;
     private $engine;
@@ -170,21 +172,125 @@ class Car {
         return $this->engine;
     }
 }
+```
 
 4. Inheritance:
 
-Parent and child classes.
-Overriding methods.
+Inheritance allows one class to inherit the properties and methods of another.
+It helps create a hierarchy and avoids code duplication.
+
+Example: 
+
+```php
+
+class Dacia extends Mycar {
+        
+        public function displayCar() {
+            echo '------ ' .$this->model . ', Ma tomobil ma waaaalou';
+        }
+
+
+    }
+
+    $car = new Dacia();
+    $car->model = 'Dacia Logan';
+    $car->displayCar();
+
+
+```
 
 5. Abstract Classes:
 
-Creating templates for other classes.
-abstract methods and their implementation.
+An abstract class in PHP is a class that cannot be instantiated directly.
+Instead, it serves as a blueprint for other classes that inherit from it. It may contain both:
+
+---Abstract Methods: Methods that do not have a body in the abstract class and must be implemented by subclasses.
+---Concrete Methods: Fully implemented methods that can be inherited and used directly by subclasses or overridden.
+
+Example: 
+
+```php
+
+ abstract class Animal {
+
+        abstract public function move();
+
+        public function sleep(){
+            echo 'animal is sleeping <br>';
+        }
+
+
+    }
+
+    class Wolf extends Animal {
+
+        public function move(){
+            echo '<br>Wolf is running <br>';
+        }
+
+    }
+    
+    class Bear extends Animal {
+
+        public function move(){
+            echo 'Bear is walking <br>';
+        }
+
+    }
+
+
+    $wolf = new Wolf();
+    $wolf->move();
+    $wolf->sleep();
+    
+    
+    $bear = new Bear();
+    $bear->move();
+    $bear->sleep();
+
+
+
+
+```
 
 6. Interfaces:
 
-Defining a contract for classes.
-Implementing multiple interfaces.
+An interface in PHP is a contract that defines a set of methods a class must implement.
+However, unlike abstract classes, interfaces cannot provide any method implementations themselves.
+They only define the method signatures (i.e., method name, parameters, and return type).
+Any class that implements an interface is required to provide the actual implementation for all the methods declared in the interface.
+
+```php
+
+ interface Earth{
+        public function turnOnSelf();
+        public function turnOnSun();
+        public function travellingInUnivers();
+    }
+
+
+    class Galaxy implements Earth {
+        public function turnOnSelf(){
+            echo '<br> 24 hours tour';
+        }
+        public function turnOnSun(){
+            echo '<br> 365 days tour';
+        }
+        public function travellingInUnivers(){
+            echo '<br> travelling since the beginning!';
+        }
+    }
+
+    $earth= new Galaxy();
+    $earth->turnOnSelf();
+    $earth->turnOnSun();
+    $earth->travellingInUnivers();
+    
+   
+
+```
+
+
 
 7. Static Methods and Properties:
 

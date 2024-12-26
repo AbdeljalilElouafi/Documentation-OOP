@@ -50,6 +50,20 @@
     $eye = new Eye("green"); 
 
 
+    class Dacia extends Mycar {
+        
+        public function displayCar() {
+            echo '------ ' .$this->model . ', Ma tomobil ma waaaalou';
+        }
+
+
+    }
+
+    $car = new Dacia();
+    $car->model = 'Dacia Logan';
+    $car->displayCar();
+
+
     // class Car {
     //     public $color;
     //     private $engine;
@@ -64,6 +78,75 @@
     //     }
     // }
 
+
+
+    // ------------ABSTRACTION----------------
+
+    abstract class Animal {
+
+        abstract public function move();
+
+        public function sleep(){
+            echo 'animal is sleeping <br>';
+        }
+
+
+    }
+
+    class Wolf extends Animal {
+
+        public function move(){
+            echo '<br>Wolf is running <br>';
+        }
+
+    }
+    
+    class Bear extends Animal {
+
+        public function move(){
+            echo 'Bear is walking <br>';
+        }
+
+    }
+
+
+    $wolf = new Wolf();
+    $wolf->move();
+    $wolf->sleep();
+    
+    
+    $bear = new Bear();
+    $bear->move();
+    $bear->sleep();
+
+
+    //-----------INTERFACE-------------
+
+    interface Earth{
+        public function turnOnSelf();
+        public function turnOnSun();
+        public function travellingInUnivers();
+    }
+
+
+    class Galaxy implements Earth {
+        public function turnOnSelf(){
+            echo '<br> 24 hours tour';
+        }
+        public function turnOnSun(){
+            echo '<br> 365 days tour';
+        }
+        public function travellingInUnivers(){
+            echo '<br> travelling since the beginning!';
+        }
+    }
+
+    $earth= new Galaxy();
+    $earth->turnOnSelf();
+    $earth->turnOnSun();
+    $earth->travellingInUnivers();
+    
+   
 
 
 ?>
