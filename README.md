@@ -67,17 +67,109 @@ Example: A Vehicle class might have a startEngine method, but subclasses like Ca
 Defining a class and creating an object.
 Syntax and examples.
 
-3.1. Properties and Methods:
-Understanding class attributes (properties) and functions (methods).
-Examples of how methods interact with properties.
+A class is a blueprint for creating objects. A object is an instance of a class.
 
-3.2. Constructors and Destructors:
-Automatic initialization of objects using __construct().
-Cleaning up resources with __destruct().
+// a class
 
-3.3. Access Modifiers:
-public, private, protected.
-Examples of encapsulation using getters and setters.
+ class Car {
+
+    public $brand;
+    public $color;
+    public $topSpeed;
+
+    public function myCar(){
+        echo 'My car is a: ' .$this->brand . ', Its ' .$this->color . ' and its top speed is: ' .$this->topSpeed;
+    }
+
+
+   }
+
+// an object
+
+
+   $car = new Car();
+   $car->brand='SKYLINE R32';
+   $car->color= 'Light Gray';
+   $car->topSpeed= '340 KM/H';
+   $car->myCar();
+   
+-------------------------------------------------------
+
+3.1. Properties and Methods
+Properties (attributes) are variables that belong to the class, and methods (functions) define the behavior of the class.
+
+Example:
+
+class Mycar {
+    // properties
+
+    public $color;
+    public $model;
+
+    // method
+
+    public function displayCar() {
+        echo " ------- Color: " . $this->color . ", Model: " . $this->model;
+    }
+    }
+
+    $car = new Mycar();
+    $car->color = "blue";
+    $car->model = "BMW";
+    $car->displayCar();
+
+
+-------------------------------------------------------
+
+3.2. Constructors and Destructors
+Constructor (__construct): This is automatically called when an object is created, typically used for initializing object properties.
+
+Destructor (__destruct): This is called when an object is destroyed, often used to clean up resources like closing database connections.
+
+Example:
+
+
+class Eye {
+        public $color;
+    
+        public function __construct($color) {
+            $this->color = $color;
+        }
+    
+        public function __destruct() {
+            echo "------- Object of color {$this->color} is being destroyed.";
+        }
+    }
+    
+    $eye = new Eye("green"); 
+
+-------------------------------------------------------
+
+3.3. Access Modifiers
+Access modifiers determine how the properties and methods of a class can be accessed.
+
+public: Accessible from anywhere.
+
+private: Accessible only within the class.
+
+protected: Accessible within the class and by inheriting classes.
+
+Example:
+
+
+class Car {
+    public $color;
+    private $engine;
+
+    public function __construct($color) {
+        $this->color = $color;
+        $this->engine = "V8";
+    }
+
+    public function getEngine() {
+        return $this->engine;
+    }
+}
 
 4. Inheritance:
 
