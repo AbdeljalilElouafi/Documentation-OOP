@@ -1,5 +1,12 @@
 <?php
 
+    spl_autoload_register(function ($class) {
+        include 'src/' . str_replace('\\', '/', $class) . '.php';
+    });
+
+    $Truck = new Vehicles\Truck();  
+    $Truck->drive(); 
+
    class Car {
 
     public $brand;
@@ -120,15 +127,42 @@
     $bear->sleep();
 
 
-    //-----------INTERFACE-------------
+    abstract class BankAccount {
+        protected $balance;
+        protected $accountOwner;
 
+        public function __construct($balance , $name ){
+            $this->balance = $balance;
+            $this->accountOwner = $name;
+        }
+
+        public function deposit($amount){
+
+            if($amount<=0){
+                echo 'Amount must be bigger than 0 <br>';
+            }
+
+            $this->balance +=$amount;
+            echo 'new balance is: ' .$this->balance;
+
+        }
+
+        abstract function withdraw($amount);
+
+
+    }
+
+
+
+    //-----------INTERFACE-------------
+    
     interface Earth{
         public function turnOnSelf();
         public function turnOnSun();
         public function travellingInUnivers();
     }
-
-
+    
+    
     class Galaxy implements Earth {
         public function turnOnSelf(){
             echo '<br> 24 hours tour';
@@ -140,12 +174,37 @@
             echo '<br> travelling since the beginning!';
         }
     }
-
+    
     $earth= new Galaxy();
     $earth->turnOnSelf();
     $earth->turnOnSun();
     $earth->travellingInUnivers();
     
+    
+    //-----------STATIC METHODS-------------
+
+    
+    class Bike {
+
+        public static $speed = 0;
+        
+        public static function speeding(){
+        
+              self::$speed++;
+        
+        }
+        
+        
+        }
+        
+        Bike::speeding();
+        Bike::speeding();
+        Bike::speeding();
+        Bike::speeding();
+        
+        echo '<br>';
+        echo Bike::$speed;
+        
    
 
 

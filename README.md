@@ -294,9 +294,42 @@ Any class that implements an interface is required to provide the actual impleme
 
 7. Static Methods and Properties:
 
-Shared properties and utility methods.
+In PHP, static methods and static properties are special kinds of class members that belong to the class itself rather than to instances of the class.
+This means that you can access them without creating an object of the class. 
+Static methods and properties are useful for tasks that are related to the class itself rather than to individual objects.
+
+Example: 
+
+```php
+
+class Bike {
+
+public static $speed = 0;
+
+public static function speeding(){
+
+      self::$speed++;
+
+}
+
+
+}
+
+Bike::speeding();
+
+echo Bike::$speed;
+
+
+```
 
 8. Namespaces and Autoloading:
 
-Organizing code with namespaces.
-Using Composer’s autoload for managing classes.
+
+
+A namespace in PHP is a way to encapsulate or group classes, interfaces, functions, and constants logically to avoid name conflicts.
+Namespaces are especially useful in large projects, or when using third-party libraries, as they help prevent naming collisions.
+
+Autoloading is the ability for PHP to automatically load class files when a class is instantiated, without needing to explicitly include or require them. This is particularly useful in larger projects because it saves you from having to manually include class files everywhere.
+
+PHP provides an autoloader mechanism that can be customized using the spl_autoload_register function or by using a library like Composer (a dependency manager for PHP).
+
