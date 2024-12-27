@@ -1,11 +1,11 @@
 <?php
 
-    spl_autoload_register(function ($class) {
-        include 'src/' . str_replace('\\', '/', $class) . '.php';
-    });
+    // spl_autoload_register(function ($class) {
+    //     include 'src/' . str_replace('\\', '/', $class) . '.php';
+    // });
 
-    $Truck = new Vehicles\Truck();  
-    $Truck->drive(); 
+    // $Truck = new Vehicles\Truck();  
+    // $Truck->drive(); 
 
    class Car {
 
